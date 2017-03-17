@@ -1,30 +1,30 @@
 <?php 
-/*Plugin Name: Create Product Post Type
-Description: This plugin registers the 'product' post type.
+/*Plugin Name: PalFest Post Types
+Description: Custom post types for the PalFest website
 Version: 1.0
 License: GPLv2
 */
 
 // register custom post type to work with
-function wpmudev_create_post_type() {
+function palfest_create_palfestivians() {
 	// set up labels
 	$labels = array(
- 		'name' => 'Products',
-    	'singular_name' => 'Product',
-    	'add_new' => 'Add New Product',
-    	'add_new_item' => 'Add New Product',
-    	'edit_item' => 'Edit Product',
-    	'new_item' => 'New Product',
-    	'all_items' => 'All Products',
-    	'view_item' => 'View Product',
-    	'search_items' => 'Search Products',
-    	'not_found' =>  'No Products Found',
-    	'not_found_in_trash' => 'No Products found in Trash', 
+ 		'name' => 'Palfestivians',
+    	'singular_name' => 'Profile',
+    	'add_new' => 'Add New Profile',
+    	'add_new_item' => 'Add New Profile',
+    	'edit_item' => 'Edit Profile',
+    	'new_item' => 'New Profile',
+    	'all_items' => 'All Profile',
+    	'view_item' => 'View Profile',
+    	'search_items' => 'Search Profiles',
+    	'not_found' =>  'No Profiles Found',
+    	'not_found_in_trash' => 'No Profiles found in Trash', 
     	'parent_item_colon' => '',
-    	'menu_name' => 'Products',
+    	'menu_name' => 'Palfestivians',
     );
     //register post type
-	register_post_type( 'product', array(
+	register_post_type( 'profile', array(
 		'labels' => $labels,
 		'has_archive' => true,
  		'public' => true,
@@ -32,9 +32,9 @@ function wpmudev_create_post_type() {
 		'taxonomies' => array( 'post_tag', 'category' ),	
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'products' ),
+		'rewrite' => array( 'slug' => 'Palfestivians' ),
 		)
 	);
 }
-add_action( 'init', 'wpmudev_create_post_type' );
+add_action( 'init', 'palfest_create_palfestivians' );
 ?>
