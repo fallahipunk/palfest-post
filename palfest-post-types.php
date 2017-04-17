@@ -117,7 +117,7 @@ function smashing_add_post_meta_boxes() {
     'smashing-post-class',      // Unique ID
     esc_html__( 'Post Class', 'example' ),    // Title
     'smashing_post_class_meta_box',   // Callback function
-    'post',         // Admin page (or post type)
+    'profile',         // Admin page (or post type)
     'side',         // Context
     'default'         // Priority
   );
