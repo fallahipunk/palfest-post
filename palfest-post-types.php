@@ -99,11 +99,47 @@ function palfest_create_programme() {
     );
 }
 
+/* Meta box setup function. */
+function smashing_post_meta_boxes_setup() {
+
+  /* Add meta boxes on the 'add_meta_boxes' hook. */
+  add_action( 'add_meta_boxes', 'smashing_add_post_meta_boxes' );
+}
+
+/* Create one or more meta boxes to be displayed on the post editor screen. */
+function smashing_add_post_meta_boxes() {
+
+  add_meta_box(
+    'smashing-post-class',      // Unique ID
+    esc_html__( 'Post Class', 'example' ),    // Title
+    'smashing_post_class_meta_box',   // Callback function
+    'post',         // Admin page (or post type)
+    'side',         // Context
+    'default'         // Priority
+  );
+}
+
+/* Display the post meta box. */
+function smashing_post_class_meta_box( $post ) { ?>
+
+  <?php wp_nonce_field( basename( __FILE__ ), 'smashing_post_class_nonce' ); ?>
+
+  <p>
+    <label for="smashing-post-class"><?php _e( "Add a custom CSS class, which will be applied to WordPress' post class.", 'example' ); ?></label>
+    <br />
+    <input class="widefat" type="text" name="smashing-post-class" id="smashing-post-class" value="<?php echo esc_attr( get_post_meta( $post->ID, 'smashing_post_class', true ) ); ?>" size="30" />
+  </p>
+<?php }
+
+
 
 add_action( 'init', 'palfest_create_programme' );
 add_action( 'init', 'palfest_create_palfestivians' );
 add_action( 'init', 'palfest_create_articles' );
 
+/* Fire our meta box setup function on the post editor screen. */
+add_action( 'load-post.php', 'smashing_post_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
 
 
 ?>
