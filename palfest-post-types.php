@@ -7,7 +7,7 @@ License: GPLv2
 
 require(__DIR__ .'/palfestivians.php'); 
 require(__DIR__ .'/programme.php'); 
-require(__DIR__ .'/article.php'); 
+require(__DIR__ .'/articles.php'); 
 
 
 
