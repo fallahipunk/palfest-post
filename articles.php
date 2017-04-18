@@ -1,4 +1,5 @@
 <?php
+  function palfest_create_articles() {
     // set up labels
     $labels = array(
         'name' => 'Articles',
@@ -27,5 +28,5 @@
         'rewrite' => array( 'slug' => 'Articles' ),
         )
     );
-} 
+}
 ?>
