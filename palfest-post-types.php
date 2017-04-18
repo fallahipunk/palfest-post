@@ -5,9 +5,9 @@ Version: 1.0
 License: GPLv2
 */
 
-require_once(__DIR__ .'/palfestivians.php'); 
-require_once(__DIR__ .'/programme.php'); 
-require_once(__DIR__ .'/article.php'); 
+require(__DIR__ .'/palfestivians.php'); 
+require(__DIR__ .'/programme.php'); 
+require(__DIR__ .'/article.php'); 
 
 
 
