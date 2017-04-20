@@ -32,23 +32,23 @@ function palfest_create_palfestivians() {
 }
 
 /* Meta box setup function. */
-function smashing_post_meta_boxes_setup() {
+function palfestivian_meta_boxes_setup() {
 
   /* Add meta boxes on the 'add_meta_boxes' hook. */
-  add_action( 'add_meta_boxes', 'smashing_add_post_meta_boxes' );
+  add_action( 'add_meta_boxes', 'palfestivian_add_post_meta_boxes' );
 
   /* Save post meta on the 'save_post' hook. */
-add_action( 'save_post', 'smashing_save_post_class_meta', 10, 2 );
+add_action( 'save_post', 'palfestivian_save_profile_meta', 10, 2 );
 
 }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
-function smashing_add_post_meta_boxes() {
+function palfestivian_add_post_meta_boxes() {
 
   add_meta_box(
-    'smashing-post-class',      // Unique ID
-    esc_html__( 'Post Class', 'example' ),    // Title
-    'smashing_post_class_meta_box',   // Callback function
+    'palfestivian-articles',      // Unique ID
+    esc_html__( 'Palfestivian Articles', 'example' ),    // Title
+    'palfestivian_articles_meta_box',   // Callback function
     'profile',         // Admin page (or post type)
     'side',         // Context
     'default'         // Priority
@@ -56,22 +56,22 @@ function smashing_add_post_meta_boxes() {
 }
 
 /* Display the post meta box. */
-function smashing_post_class_meta_box( $post ) { ?>
+function palfestivian_articles_meta_box( $post ) { ?>
 
-  <?php wp_nonce_field( basename( __FILE__ ), 'smashing_post_class_nonce' ); ?>
+  <?php wp_nonce_field( basename( __FILE__ ), 'palfestivian_articles_nonce' ); ?>
 
   <p>
-    <label for="smashing-post-class"><?php _e( "Add a custom CSS class, which will be applied to WordPress' post class.", 'example' ); ?></label>
+    <label for="palfestivian-articles"><?php _e( "Add articles by this author", 'example' ); ?></label>
     <br />
-    <input class="widefat" type="text" name="smashing-post-class" id="smashing-post-class" value="<?php echo esc_attr( get_post_meta( $post->ID, 'smashing_post_class', true ) ); ?>" size="30" />
+    <input class="widefat" type="text" name="palfestivian-articles" id="palfestivian-articles" value="<?php echo esc_attr( get_post_meta( $post->ID, 'palfestivian_articles', true ) ); ?>" size="30" />
   </p>
 <?php }
 
 /* Save the meta box's post metadata. */
-function smashing_save_post_class_meta( $post_id, $post ) {
+function palfestivian_save_profile_meta( $post_id, $post ) {
 
   /* Verify the nonce before proceeding. */
-  if ( !isset( $_POST['smashing_post_class_nonce'] ) || !wp_verify_nonce( $_POST['smashing_post_class_nonce'], basename( __FILE__ ) ) )
+  if ( !isset( $_POST['palfestivian_articles_nonce'] ) || !wp_verify_nonce( $_POST['palfestivian_articles_nonce'], basename( __FILE__ ) ) )
     return $post_id;
 
   /* Get the post type object. */
@@ -82,10 +82,10 @@ function smashing_save_post_class_meta( $post_id, $post ) {
     return $post_id;
 
   /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['smashing-post-class'] ) ? sanitize_html_class( $_POST['smashing-post-class'] ) : '' );
+  $new_meta_value = ( isset( $_POST['palfestivian-articles'] ) ? sanitize_html_class( $_POST['palfestivian-articles'] ) : '' );
 
   /* Get the meta key. */
-  $meta_key = 'smashing_post_class';
+  $meta_key = 'palfestivian-articles';
 
   /* Get the meta value of the custom field key. */
   $meta_value = get_post_meta( $post_id, $meta_key, true );
@@ -104,9 +104,9 @@ function smashing_save_post_class_meta( $post_id, $post ) {
 }
 
 /* Filter the post class hook with our custom post class function. */
-add_filter( 'post_class', 'smashing_post_class' );
+add_filter( 'post_class', 'palfestivian_articles' );
 
-function smashing_post_class( $classes ) {
+function palfestivian_articles( $classes ) {
 
   /* Get the current post ID. */
   $post_id = get_the_ID();
@@ -115,7 +115,7 @@ function smashing_post_class( $classes ) {
   if ( !empty( $post_id ) ) {
 
     /* Get the custom post class. */
-    $post_class = get_post_meta( $post_id, 'smashing_post_class', true );
+    $post_class = get_post_meta( $post_id, 'palfestivian_articles', true );
 
     /* If a post class was input, sanitize it and add it to the post class array. */
     if ( !empty( $post_class ) )
@@ -126,7 +126,7 @@ function smashing_post_class( $classes ) {
 }
 
 /* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php', 'smashing_post_meta_boxes_setup' );
-add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
+add_action( 'load-post.php', 'palfestivian_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'palfestivian_meta_boxes_setup' );
 
 ?>
