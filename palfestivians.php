@@ -85,7 +85,7 @@ function palfestivian_save_profile_meta( $post_id, $post ) {
   $new_meta_value = ( isset( $_POST['palfestivian-articles'] ) ? sanitize_html_class( $_POST['palfestivian-articles'] ) : '' );
 
   /* Get the meta key. */
-  $meta_key = 'palfestivian-articles';
+  $meta_key = 'palfestivian_articles';
 
   /* Get the meta value of the custom field key. */
   $meta_value = get_post_meta( $post_id, $meta_key, true );
