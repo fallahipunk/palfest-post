@@ -44,7 +44,7 @@ function article_add_profiles_boxes() {
 
   add_meta_box(
     'article-profiles',      // Unique ID
-    esc_html__( 'Post Class', 'example' ),    // Title
+    esc_html__( 'Profiles', 'example' ),    // Title
     'article_profiles_meta_box',   // Callback function
     'article',         // Admin page (or post type)
     'side',         // Context
