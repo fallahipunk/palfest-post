@@ -22,7 +22,7 @@ function palfest_create_palfestivians() {
 		'labels' => $labels,
 		'has_archive' => true,
  		'public' => true,
-		'supports' => array( 'title', 'editor', 'thumbnail' ),
+		'supports' => array( 'title', 'editor', 'thumbnail', ),
 		'taxonomies' => array('category' ),	
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
