@@ -3,7 +3,7 @@
 function palfest_create_palfestivians() {
 	// set up labels
 	$labels = array(
- 		'name' => 'Palfestivians',
+ 		'name' => 'Authors',
     	'singular_name' => 'Profile',
     	'add_new' => 'Add New Profile',
     	'add_new_item' => 'Add New Profile',
@@ -15,7 +15,7 @@ function palfest_create_palfestivians() {
     	'not_found' =>  'No Profiles Found',
     	'not_found_in_trash' => 'No Profiles found in Trash', 
     	'parent_item_colon' => '',
-    	'menu_name' => 'Palfestivians',
+    	'menu_name' => 'Authors',
     );
     //register post type
 	register_post_type( 'profile', array(
@@ -26,7 +26,7 @@ function palfest_create_palfestivians() {
 		'taxonomies' => array('category' ),	
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'Palfestivians' ),
+		'rewrite' => array( 'slug' => 'Authors' ),
 		)
 	);
 }
@@ -38,7 +38,6 @@ function palfestivian_meta_boxes_setup() {
   add_action( 'add_meta_boxes', 'palfestivian_add_post_meta_boxes' );
 
   /* Save post meta on the 'save_post' hook. */
-add_action( 'save_post', 'palfestivian_save_featured_meta', 10, 2 );
 add_action( 'save_post', 'palfestivian_save_last_name_meta', 10, 2 );
 
 }
@@ -55,14 +54,7 @@ function palfestivian_add_post_meta_boxes() {
     'default'         // Priority
   );
 
-  add_meta_box(
-    'palfestivian-featured',      // Unique ID
-    esc_html__( 'Featured Content', 'example' ),    // Title
-    'palfestivian_featured_meta_box',   // Callback function
-    'profile',         // Admin page (or post type)
-    'side',         // Context
-    'default'         // Priority
-  );
+
 
 }
 
