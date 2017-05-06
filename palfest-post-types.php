@@ -1,7 +1,7 @@
 <?php 
 /*Plugin Name: PalFest Post Types
 Description: Custom post types for the PalFest website
-Version: 1.0
+Version: 1.1
 License: GPLv2
 */
 
