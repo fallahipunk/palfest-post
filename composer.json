@@ -1,7 +1,7 @@
 
 {
   "name": "llcllc/palfest-post",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Custom post types for the PalFest website",
   "keywords": ["palfest"],
   "homepage": "https://github.com/llcllc/palfest-post.git",
