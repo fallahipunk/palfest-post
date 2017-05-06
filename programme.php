@@ -21,12 +21,13 @@ function palfest_create_programme() {
         'labels' => $labels,
         'has_archive' => true,
         'public' => true,
-        'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail','page-attributes' ),
-        'taxonomies' => array( 'post_tag', 'category' ),    
+        'supports' => array( 'title', 'editor','page-attributes' ),  
         'exclude_from_search' => false,
         'capability_type' => 'post',
         'rewrite' => array( 'slug' => 'Programme' ),
         )
     );
 }
+
+
 ?>

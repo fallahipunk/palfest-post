@@ -3,7 +3,7 @@
 function palfest_create_palfestivians() {
 	// set up labels
 	$labels = array(
- 		'name' => 'Authors',
+ 		'name' => 'Artists',
     	'singular_name' => 'Profile',
     	'add_new' => 'Add New Profile',
     	'add_new_item' => 'Add New Profile',
@@ -15,7 +15,7 @@ function palfest_create_palfestivians() {
     	'not_found' =>  'No Profiles Found',
     	'not_found_in_trash' => 'No Profiles found in Trash', 
     	'parent_item_colon' => '',
-    	'menu_name' => 'Authors',
+    	'menu_name' => 'Artists',
     );
     //register post type
 	register_post_type( 'profile', array(
@@ -26,7 +26,7 @@ function palfest_create_palfestivians() {
 		'taxonomies' => array('category' ),	
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'Authors' ),
+		'rewrite' => array( 'slug' => 'Artists' ),
 		)
 	);
 }
@@ -86,7 +86,7 @@ function palfestivian_save_last_name_meta( $post_id, $post ) {
     return $post_id;
 
   /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['palfestivian-last-name'] ) ? sanitize_html_class( $_POST['palfestivian-last-name'] ) : '' );
+  $new_meta_value = $_POST['palfestivian-last-name'];
 
   /* Get the meta key. */
   $meta_key = 'palfestivian_last_name';
@@ -114,6 +114,13 @@ function my_connection_types() {
         'from' => 'profile',
         'to' => 'article'
     ) );
+
+        p2p_register_connection_type( array(
+        'name' => 'profiles_to_days',
+        'from' => 'profile',
+        'to' => 'day'
+    ) );
+
 }
 add_action( 'p2p_init', 'my_connection_types' );
 
