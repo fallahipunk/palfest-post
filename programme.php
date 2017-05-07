@@ -21,7 +21,7 @@ function palfest_create_programme() {
         'labels' => $labels,
         'has_archive' => true,
         'public' => true,
-        'supports' => array( 'title', 'editor','page-attributes' ),  
+        'supports' => array( 'title', 'editor','page-attributes','thumbnail'),  
         'exclude_from_search' => false,
         'capability_type' => 'post',
         'rewrite' => array( 'slug' => 'Programme' ),
